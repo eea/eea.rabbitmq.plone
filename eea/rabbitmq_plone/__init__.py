@@ -1,0 +1,2 @@
+""" EEA RabbitMQ Plone package
+"""

@@ -1,0 +1,7 @@
+Changelog
+=========
+
+1.0.dev0 - (unreleased)
+-----------------------
+* Feature: Basic implementation.
+  [GhitaB #91506]
