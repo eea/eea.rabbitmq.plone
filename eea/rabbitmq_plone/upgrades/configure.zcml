@@ -22,12 +22,25 @@
   <genericsetup:upgradeSteps
     source="1.0.0"
     destination="1.0.1"
-    profile="eea.rabbitmq.client:default">
+    profile="eea.rabbitmq_plone:default">
 
     <genericsetup:upgradeDepends
-      title="Upgrade step for eea.rabbitmq.client: import registry."
+      title="Upgrade step for eea.rabbitmq_plone: import registry."
       import_steps="plone.app.registry"
       />
 
   </genericsetup:upgradeSteps>
+
+   <genericsetup:upgradeSteps
+      source="1.0.1"
+      destination="1.0.2"
+      profile="eea.rabbitmq_plone:default">
+
+      <genericsetup:upgradeDepends
+        title="Upgrade step for eea.rabbitmq_plone: import controlpanel."
+        import_steps="controlpanel"
+        />
+
+  </genericsetup:upgradeSteps>
+
 </configure>
