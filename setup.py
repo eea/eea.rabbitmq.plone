@@ -28,6 +28,7 @@ setup(name='eea.rabbitmq_plone',
       install_requires=[
           'setuptools',
           'plone.api',
+          'eea.rabbitmq.client',
       ],
       entry_points="""
       # -*- Entry points: -*-
