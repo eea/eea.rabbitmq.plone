@@ -2,7 +2,7 @@
 """
 
 from contextlib import contextmanager
-from eea.rabbit.client.rabbitmq import RabbitMQConnector
+from eea.rabbitmq.client.rabbitmq import RabbitMQConnector
 from plone import api
 from plone.app.registry.browser.controlpanel import ControlPanelFormWrapper
 from plone.app.registry.browser.controlpanel import RegistryEditForm
