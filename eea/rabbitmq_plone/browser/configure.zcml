@@ -4,14 +4,11 @@
   xmlns:faceted="http://namespaces.zope.org/faceted"
   i18n_domain="eea.rabbitmq_plone">
 
-  <!-- Test view -->
   <browser:page
-    for="*"
-    name="zzz-test-view"
-    template="templates/test.pt"
-    class=".views.TestView"
-    layer="eea.rabbitmq_plone.interfaces.layers.IEEARabbitMQPloneInstalled"
-    permission="zope2.View"
+    name="rabbitmq-client-controlpanel"
+    for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    permission="cmf.ManagePortal"
+    class="eea.rabbitmq_plone.rabbitmq.RabbitMQClientControlPanelView"
     />
 
 </configure>
