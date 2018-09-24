@@ -27,7 +27,7 @@ setup(name='eea.rabbitmq_plone',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'plone.app.dexterity',
+          'plone.api',
       ],
       entry_points="""
       # -*- Entry points: -*-
