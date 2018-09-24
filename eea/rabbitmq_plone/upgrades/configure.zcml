@@ -19,4 +19,15 @@
 
   </genericsetup:upgradeSteps>
 
+  <genericsetup:upgradeSteps
+    source="1.0.0"
+    destination="1.0.1"
+    profile="eea.rabbitmq.client:default">
+
+    <genericsetup:upgradeDepends
+      title="Upgrade step for eea.rabbitmq.client: import registry."
+      import_steps="plone.app.registry"
+      />
+
+  </genericsetup:upgradeSteps>
 </configure>
