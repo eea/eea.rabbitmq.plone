@@ -30,6 +30,14 @@ setup(name='eea.rabbitmq_plone',
           'plone.api',
           'eea.rabbitmq.client',
       ],
+      extras_require={
+          'test': [
+              'setuptools',
+              'plone.api',
+              'eea.rabbitmq.client',
+              'plone.app.testing',
+          ],
+      },
       entry_points="""
       # -*- Entry points: -*-
       """,
