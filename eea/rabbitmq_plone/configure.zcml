@@ -21,4 +21,12 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="Uninstall the EEA RabbitMQ Plone package."
+      directory="profiles/uninstall"
+      description="Uninstall the EEA RabbitMQ Plone package."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
   </configure>
