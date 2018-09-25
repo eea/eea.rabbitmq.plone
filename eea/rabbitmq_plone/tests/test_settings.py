@@ -1,13 +1,17 @@
 import unittest
 
 
-class TestProgramUnit(unittest.TestCase):
+class TestSettings(unittest.TestCase):
     """Unit test for the Program type
     """
 
-    def test_catalog(self):
-
-        self.assertEqual(6, 6)
+    def test_interfaces(self):
+        try:
+            from eea.rabbitmq_plone.interfaces.layers import \
+                    IEEARabbitMQPloneInstalled
+        except Exception:
+            IEEARabbitMQPloneInstalled = None
+        self.assertTrue(IEEARabbitMQPloneInstalled is not None)
 
 
 def test_suite():
