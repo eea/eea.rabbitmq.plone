@@ -2,6 +2,18 @@
 
 Configuration and utilities for RabbitMQ client
 
+Install by adding it to your buildout::
+
+    [buildout]
+
+    ...
+
+    eggs =
+        eea.rabbitmq_plone
+
+
+and then running ``bin/buildout``
+
 ## :star: Source code
 
 Latest source code (Plone 4 compatible): https://github.com/eea/eea.rabbitmq.plone/
