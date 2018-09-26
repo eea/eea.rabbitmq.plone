@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <rolemap>
   <permissions>
-    <permission name="eea.rabbitmq_plone.rabbitmq: Manage settings" acquire="False">
+    <permission name="eea.rabbitmq.plone.rabbitmq: Manage settings" acquire="False">
       <role name="Manager" />
       <role name="Site Administrator" />
     </permission>

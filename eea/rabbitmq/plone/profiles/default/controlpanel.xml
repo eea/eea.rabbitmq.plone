@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <object name="portal_controlpanel"
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="eea.rabbitmq_plone"
+    i18n:domain="eea.rabbitmq.plone"
     purge="False">
 
     <configlet title="RabbitMQ Settings"
         action_id="rabbitmq_client_settings"
-        appId="eea.rabbitmq_plone"
+        appId="eea.rabbitmq.plone"
         category="Products"
         condition_expr=""
         url_expr="string:${portal_url}/@@rabbitmq-client-controlpanel"

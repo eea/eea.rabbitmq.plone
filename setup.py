@@ -6,7 +6,7 @@ import os
 
 version = open('version.txt').read().strip()
 
-setup(name='eea.rabbitmq_plone',
+setup(name='eea.rabbitmq.plone',
       version=version,
       description="EEA RabbitMQ Plone - plone add-on.",
       long_description=open("README.txt").read() + "\n" +

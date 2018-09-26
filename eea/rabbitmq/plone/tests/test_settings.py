@@ -7,7 +7,7 @@ class TestSettings(unittest.TestCase):
 
     def test_interfaces(self):
         try:
-            from eea.rabbitmq_plone.interfaces.layers import \
+            from eea.rabbitmq.plone.interfaces.layers import \
                     IEEARabbitMQPloneInstalled
         except Exception:
             IEEARabbitMQPloneInstalled = None

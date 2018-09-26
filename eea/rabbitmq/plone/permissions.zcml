@@ -3,8 +3,8 @@
   xmlns:browser="http://namespaces.zope.org/browser">
 
   <permission
-    id="eea.rabbitmq_plone.rabbitmq.manage"
-    title="eea.rabbitmq_plone.rabbitmq: Manage settings"
+    id="eea.rabbitmq.plone.rabbitmq.manage"
+    title="eea.rabbitmq.plone.rabbitmq: Manage settings"
     />
 
 </configure>

@@ -2,13 +2,13 @@
   xmlns="http://namespaces.zope.org/zope"
   xmlns:browser="http://namespaces.zope.org/browser"
   xmlns:faceted="http://namespaces.zope.org/faceted"
-  i18n_domain="eea.rabbitmq_plone">
+  i18n_domain="eea.rabbitmq.plone">
 
   <browser:page
     name="rabbitmq-client-controlpanel"
     for="Products.CMFPlone.interfaces.IPloneSiteRoot"
     permission="cmf.ManagePortal"
-    class="eea.rabbitmq_plone.rabbitmq.RabbitMQClientControlPanelView"
+    class="eea.rabbitmq.plone.rabbitmq.RabbitMQClientControlPanelView"
     />
 
 </configure>

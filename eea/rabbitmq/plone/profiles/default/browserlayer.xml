@@ -1,0 +1,6 @@
+<layers>
+  <layer
+    name="eea.rabbitmq.plone"
+    interface="eea.rabbitmq.plone.interfaces.layers.IEEARabbitMQPloneInstalled"
+    />
+</layers>

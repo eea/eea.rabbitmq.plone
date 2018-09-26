@@ -1,0 +1,3 @@
+<layers>
+  <layer name="eea.rabbitmq.plone" remove="true" />
+</layers>

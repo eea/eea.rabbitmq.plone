@@ -5,7 +5,7 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:cmf="http://namespaces.zope.org/cmf"
     xmlns:browser="http://namespaces.zope.org/browser"
-    i18n_domain="eea.rabbitmq_plone">
+    i18n_domain="eea.rabbitmq.plone">
 
   <include package=".browser" />
   <include package=".content" />
@@ -15,7 +15,7 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="eea.rabbitmq_plone"
+      title="eea.rabbitmq.plone"
       directory="profiles/default"
       description="Installs the EEA RabbitMQ Plone package."
       provides="Products.GenericSetup.interfaces.EXTENSION"

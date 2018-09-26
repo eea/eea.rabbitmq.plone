@@ -9,7 +9,7 @@ Install by adding it to your buildout::
     ...
 
     eggs =
-        eea.rabbitmq_plone
+        eea.rabbitmq.plone
 
 
 and then running ``bin/buildout``

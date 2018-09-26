@@ -16,7 +16,7 @@ from zope.schema import TextLine, Int
 import logging
 import transaction
 
-logger = logging.getLogger("eea.rabbitmq_plone")
+logger = logging.getLogger("eea.rabbitmq.plone")
 logger.setLevel(logging.DEBUG)
 ch = logging.StreamHandler()
 ch.setLevel(logging.DEBUG)
