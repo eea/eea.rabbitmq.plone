@@ -22,7 +22,7 @@ setup(name='eea.rabbitmq.plone',
       url='https://github.com/eea/eea.rabbitmq.plone.git',
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
-      namespace_packages=['eea', ],
+      namespace_packages=['eea', 'eea.rabbitmq'],
       include_package_data=True,
       zip_safe=False,
       install_requires=[
