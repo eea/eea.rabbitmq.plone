@@ -14,6 +14,10 @@ Install by adding it to your buildout::
 
 and then running ``bin/buildout``
 
+For testing:
+
+    /plone/instance# ./bin/test -s eea.rabbitmq_plone
+    
 ## :star: Source code
 
 Latest source code (Plone 4 compatible): https://github.com/eea/eea.rabbitmq.plone/
