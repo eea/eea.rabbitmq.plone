@@ -16,7 +16,7 @@ and then running ``bin/buildout``
 
 For testing:
 
-    /plone/instance# ./bin/test -s eea.rabbitmq_plone
+    /plone/instance# ./bin/test -s eea.rabbitmq.plone
     
 ## :star: Source code
 
