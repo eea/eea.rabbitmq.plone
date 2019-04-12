@@ -1,6 +1,6 @@
 """ Configuration and utilities for RabbitMQ client
 """
-
+import os
 from contextlib import contextmanager
 from eea.rabbitmq.client.rabbitmq import RabbitMQConnector
 from plone import api
@@ -27,16 +27,19 @@ formatter = logging.Formatter(
 ch.setFormatter(formatter)
 logger.addHandler(ch)
 
+RABBITMQ_HOST = unicode(os.environ.get("RABBITMQ_HOST", "") or "localhost")
+RABBITMQ_PORT = int(os.environ.get("RABBITMQ_PORT", "") or "5672")
+RABBITMQ_USER = unicode(os.environ.get("RABBITMQ_USER", ""))
+RABBITMQ_PASS = unicode(os.environ.get("RABBITMQ_PASS", ""))
 
 class IRabbitMQClientSettings(Interface):
     """ Client settings for RabbitMQ
     """
 
-    server = TextLine(title=u"Server Address",
-                      required=True, default=u"localhost")
-    port = Int(title=u"Server port", required=True, default=5672)
-    username = TextLine(title=u"Username", required=True)
-    password = TextLine(title=u"Password", required=True)
+    server = TextLine(title=u"Server Address", required=True, default=RABBITMQ_HOST)
+    port = Int(title=u"Server port", required=True, default=RABBITMQ_PORT)
+    username = TextLine(title=u"Username", required=True, default=RABBITMQ_USER)
+    password = TextLine(title=u"Password", required=True, default=RABBITMQ_PASS)
 
 
 class RabbitMQClientControlPanelForm(RegistryEditForm):
