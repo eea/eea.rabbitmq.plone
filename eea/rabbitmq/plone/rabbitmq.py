@@ -127,7 +127,7 @@ class MessagesDataManager(object):
 
         for queue, msg in self.messages:
             try:
-                send_message(queue, msg)
+                send_message(msg, queue=queue)
             except Exception:
                 logger.exception("RabbitMQ Connection exception")
 
