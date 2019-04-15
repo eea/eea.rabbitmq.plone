@@ -1,29 +1,31 @@
-# -*- coding: utf-8 -*-
-
-
-from setuptools import setup, find_packages
+""" Installer
+"""
 import os
+from setuptools import setup, find_packages
 
-version = open('version.txt').read().strip()
+NAME = 'eea.rabbitmq.plone'
+PATH = NAME.split('.') + ['version.txt']
+VERSION = open(os.path.join(*PATH)).read().strip()
 
-setup(name='eea.rabbitmq.plone',
-      version=version,
+setup(name=NAME,
+      version=VERSION,
       description="EEA RabbitMQ Plone - plone add-on.",
       long_description=open("README.txt").read() + "\n" +
       open(os.path.join("docs", "HISTORY.txt")).read(),
-      # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
           "Programming Language :: Python",
+          "Framework :: Plone",
+          "Framework :: Plone :: 4.3",
       ],
-      keywords='rabbitmq plone',
-      author='Ghiță Bizău',
-      author_email="ghita.bizau@eaudeweb.ro",
+      keywords='EEA Add-ons Plone Zope RabbitMQ',
+      author='European Environment Agency: IDM2 A-Team',
+      author_email='eea-edw-a-team-alerts@googlegroups.com',
       url='https://github.com/eea/eea.rabbitmq.plone.git',
-      license='GPL',
-      packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['eea', 'eea.rabbitmq'],
+      packages=find_packages(exclude=['ez_setup']),
       include_package_data=True,
+      license='GPL',
       zip_safe=False,
       install_requires=[
           'setuptools',
@@ -32,13 +34,12 @@ setup(name='eea.rabbitmq.plone',
       ],
       extras_require={
           'test': [
-              'setuptools',
-              'plone.api',
-              'eea.rabbitmq.client',
               'plone.app.testing',
           ],
       },
       entry_points="""
       # -*- Entry points: -*-
+      [z3c.autoinclude.plugin]
+      target = plone
       """,
       )
