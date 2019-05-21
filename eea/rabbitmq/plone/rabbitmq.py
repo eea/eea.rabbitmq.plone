@@ -101,6 +101,14 @@ class MessagesDataManager(object):
         self.messages = []
         self.txn = None
 
+    @property
+    def transaction(self):
+        return self.txn
+
+    @transaction.setter
+    def transaction(self, value):
+        self.txn = value
+
     def tpc_begin(self, txn):
         self.txn = txn
 
