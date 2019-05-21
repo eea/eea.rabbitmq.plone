@@ -3,6 +3,8 @@ Changelog
 
 1.1-dev0 - (unreleased)
 ---------------------
+* Bug fix: AttributeError: 'MessagesDataManager' object has no attribute 'transaction'
+  [avoinea refs #105999]
 
 1.0 - (2019-04-12)
 ------------------
