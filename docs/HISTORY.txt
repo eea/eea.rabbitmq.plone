@@ -3,6 +3,8 @@ Changelog
 
 1.2-dev0 - (unreleased)
 ---------------------
+* python3 compatibility fixes [dumitval]
+* code linting [dumitval]
 
 1.1-dev0 - (unreleased)
 ---------------------
