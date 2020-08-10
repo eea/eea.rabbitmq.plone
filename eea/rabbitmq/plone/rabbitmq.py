@@ -2,7 +2,8 @@
 """
 import os
 from contextlib import contextmanager
-from eea.rabbitmq.client.rabbitmq import RabbitMQConnector
+import logging
+import six
 from plone import api
 from plone.app.registry.browser.controlpanel import ControlPanelFormWrapper
 from plone.app.registry.browser.controlpanel import RegistryEditForm
@@ -13,8 +14,8 @@ from zope.component import getUtility
 from zope.component.hooks import getSite
 from zope.interface import Interface
 from zope.schema import TextLine, Int
-import logging
 import transaction
+from eea.rabbitmq.client.rabbitmq import RabbitMQConnector
 
 logger = logging.getLogger("eea.rabbitmq.plone")
 logger.setLevel(logging.DEBUG)
@@ -27,22 +28,29 @@ formatter = logging.Formatter(
 ch.setFormatter(formatter)
 logger.addHandler(ch)
 
-RABBITMQ_HOST = unicode(os.environ.get("RABBITMQ_HOST", "") or "localhost")
+RABBITMQ_HOST = six.text_type(os.environ.get("RABBITMQ_HOST", "") or
+                              "localhost")
 RABBITMQ_PORT = int(os.environ.get("RABBITMQ_PORT", "") or "5672")
-RABBITMQ_USER = unicode(os.environ.get("RABBITMQ_USER", ""))
-RABBITMQ_PASS = unicode(os.environ.get("RABBITMQ_PASS", ""))
+RABBITMQ_USER = six.text_type(os.environ.get("RABBITMQ_USER", ""))
+RABBITMQ_PASS = six.text_type(os.environ.get("RABBITMQ_PASS", ""))
+
 
 class IRabbitMQClientSettings(Interface):
     """ Client settings for RabbitMQ
     """
 
-    server = TextLine(title=u"Server Address", required=True, default=RABBITMQ_HOST)
+    server = TextLine(title=u"Server Address", required=True,
+                      default=RABBITMQ_HOST)
     port = Int(title=u"Server port", required=True, default=RABBITMQ_PORT)
-    username = TextLine(title=u"Username", required=True, default=RABBITMQ_USER)
-    password = TextLine(title=u"Password", required=True, default=RABBITMQ_PASS)
+    username = TextLine(title=u"Username", required=True,
+                        default=RABBITMQ_USER)
+    password = TextLine(title=u"Password", required=True,
+                        default=RABBITMQ_PASS)
 
 
 class RabbitMQClientControlPanelForm(RegistryEditForm):
+    """RabbitMQClientControlPanelForm."""
+
     form.extends(RegistryEditForm)
     schema = IRabbitMQClientSettings
 
@@ -103,23 +111,44 @@ class MessagesDataManager(object):
 
     @property
     def transaction(self):
+        """transaction."""
         return self.txn
 
     @transaction.setter
     def transaction(self, value):
+        """transaction.
+
+        :param value:
+        """
         self.txn = value
 
     def tpc_begin(self, txn):
+        """tpc_begin.
+
+        :param txn:
+        """
         self.txn = txn
 
     def tpc_finish(self, txn):
+        """tpc_finish.
+
+        :param txn:
+        """
         self.messages = []
 
     def tpc_vote(self, txn):
-        # TODO: vote by trying to connect to rabbitmq server
+        """tpc_vote.
+
+        :param txn:
+        """
+        # TO DO: vote by trying to connect to rabbitmq server
         pass
 
     def tpc_abort(self, txn):
+        """tpc_abort.
+
+        :param txn:
+        """
         self._checkTransaction(txn)
 
         if self.txn is not None:
@@ -128,9 +157,17 @@ class MessagesDataManager(object):
         self.messages = []
 
     def abort(self, txn):
+        """abort.
+
+        :param txn:
+        """
         self.messages = []
 
     def commit(self, txn):
+        """commit.
+
+        :param txn:
+        """
         self._checkTransaction(txn)
 
         for queue, msg in self.messages:
@@ -143,17 +180,28 @@ class MessagesDataManager(object):
         self.messages = []
 
     def savepoint(self):
+        """savepoint."""
         self.sp += 1
         return Savepoint(self)
 
     def sortKey(self):
+        """sortKey."""
         return self.__class__.__name__
 
     def add(self, queue, msg):
+        """add.
+
+        :param queue:
+        :param msg:
+        """
         logger.info("Add msg to queue: %s => %s", msg, queue)
         self.messages.append((queue, msg))
 
     def _checkTransaction(self, txn):
+        """_checkTransaction.
+
+        :param txn:
+        """
         if (txn is not self.txn and self.txn is not None):
             raise TypeError("Transaction missmatch", txn, self.txn)
 
@@ -169,6 +217,7 @@ class Savepoint(object):
         self.transaction = dm.transaction
 
     def rollback(self):
+        """rollback."""
         if self.transaction is not self.dm.transaction:
             raise TypeError("Attempt to rollback stale rollback")
         if self.dm.sp < self.sp:
@@ -179,6 +228,12 @@ class Savepoint(object):
 
 
 def send_message(msg, queue, context=None):
+    """send_message.
+
+    :param msg:
+    :param queue:
+    :param context:
+    """
     with get_rabbitmq_conn(queue=queue, context=context) as conn:
         conn.send_message(queue, msg)
 

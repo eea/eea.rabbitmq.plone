@@ -1,6 +1,7 @@
-recursive-include eea *
+include *.md *.rst *.txt
+graft docs
+graft eea
 global-exclude *pyc
-include docs/*
-include version.txt
-
+global-exclude *~
+global-exclude *.un~
 global-include *.mo

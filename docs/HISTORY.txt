@@ -1,7 +1,14 @@
 Changelog
 =========
 
-1.1-dev0 - (unreleased)
+1.2 - (2020-08-08)
+---------------------
+* Change: Python3 compatibility
+  [valipod]
+* python3 compatibility fixes [dumitval]
+* code linting [dumitval]
+
+1.1 - (2020-08-08)
 ---------------------
 * Bug fix: AttributeError: 'MessagesDataManager' object has no attribute 'transaction'
   [avoinea refs #105999]
